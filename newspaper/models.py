@@ -14,7 +14,7 @@ class Topic(models.Model):
 
 
 class Redactor(AbstractUser):
-    years_of_experience = models.IntegerField()
+    years_of_experience = models.IntegerField(null=True)
 
     class Meta:
         verbose_name = "redactor"
@@ -23,7 +23,7 @@ class Redactor(AbstractUser):
 
 
 class Newspaper(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, unique=True)
     content = models.TextField()
     published_date = models.DateTimeField(auto_now_add=True)
     topic = models.ForeignKey(Topic,

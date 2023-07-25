@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h1>Newspaper: ({{ newspaper.id }}, {{ newspaper.title }}, {{ newspaper.topic }})</h1>
+
+        <h2>Publishers:</h2>
+        <ul class="list-group">
+          {% for redactor in newspaper.publishers.all %}
+            <li class="list-group-item">{{ redactor.username }} ({{ redactor.first_name }} {{ redactor.last_name }})</li>
+          {% endfor %}
+        </ul>
+
+        <div class="mt-4">
+          <h3>{{ newspaper.model }}</h3>
+          <a href="{% url 'newspaper:newspaper-delete' pk=newspaper.id %}" class="btn btn-danger mr-2">Delete</a>
+          <a href="{% url 'newspaper:newspaper-update' pk=newspaper.id %}" class="btn btn-secondary">Update</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

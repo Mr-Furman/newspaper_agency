@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <h1>Username: {{ redactor.username }}</h1>
+        <a href="{% url 'newspaper:redactor-delete' pk=redactor.id %}" class="btn btn-danger">Delete</a>
+        <a href="{% url 'newspaper:redactor-update' pk=redactor.id %}" class="btn btn-secondary">Update</a>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-md-6">
+            <h2>Details</h2>
+            <dl class="row">
+              <dt class="col-sm-4">First name:</dt>
+              <dd class="col-sm-8">{{ redactor.first_name }}</dd>
+
+              <dt class="col-sm-4">Last name:</dt>
+              <dd class="col-sm-8">{{ redactor.last_name }}</dd>
+
+              <dt class="col-sm-4">Years of experience:</dt>
+              <dd class="col-sm-8">{{ redactor.years_of_experience }}</dd>
+            </dl>
+          </div>
+        </div>
+
+        <hr>
+
+        <div class="row">
+          <div class="col-md-6">
+            <h2>Newspapers</h2>
+        {% for newspaper in redactor.newspapers.all %}
+
+            <dl class="row">
+              <dt class="col-sm-4">Title:</dt>
+              <dd class="col-sm-8">{{ newspaper.title }}</dd>
+
+              <dt class="col-sm-4">Topic:</dt>
+              <dd class="col-sm-8">{{ newspaper.topic.name }}</dd>
+
+              <dt class="col-sm-4">ID:</dt>
+              <dd class="col-sm-8">{{ newspaper.id }}</dd>
+            </dl>
+          </div>
+        {% empty %}
+          <p>No newspapers associated with this redactor.</p>
+        {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

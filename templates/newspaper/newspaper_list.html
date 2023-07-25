@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h1>Newspapers List</h1>
+
+        <form action="" method="get" class="form-inline">
+          {{ search_form|crispy }}
+          <input type="submit" class="btn btn-secondary link-to-page" value="Search">
+        </form>
+
+        {% if newspaper_list %}
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Topic</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for newspaper in newspaper_list %}
+                <tr>
+                  <td>{{ newspaper.id }}</td>
+                  <td>{{ newspaper.title }}</td>
+                  <td>{{ newspaper.topic.name }}</td>
+                  <td>
+                    <a href="{% url 'newspaper:newspaper-detail' pk=newspaper.id %}" class="btn btn-info btn-sm">View</a>
+                    <a href="{% url 'newspaper:newspaper-update' pk=newspaper.id %}" class="btn btn-secondary btn-sm">Edit</a>
+                    <a href="{% url 'newspaper:newspaper-delete' pk=newspaper.id %}" class="btn btn-danger btn-sm">Delete</a>
+                  </td>
+                </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        {% else %}
+          <p>There are no newspapers.</p>
+        {% endif %}
+        <a href="{% url 'newspaper:newspaper-create' %}" class="btn btn-primary">Create New Newspaper</a>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}

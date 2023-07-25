@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="card">
+  <div class="card-header">
+    <h5>Delete Redactor</h5>
+  </div>
+  <div class="card-block table-border-style">
+
+  <h5>Are you sure you want to delete the redactor: {{ redactor.username }}?</h5>
+
+  <form action="" method="POST">
+  {% csrf_token %}
+    <input type="submit" value="Yes, delete" class="btn btn-outline-danger">
+
+    <a class="btn btn-outline-primary" href="{% url 'newspaper:redactor-list' %}">
+      Cancel
+    </a>
+  </form>
+  </div>
+</div>
+
+{% endblock %}
