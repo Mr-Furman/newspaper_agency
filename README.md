@@ -9,11 +9,7 @@ View the publication history of newspapers by redactors.
 
 #Technologies Used
 The project is built using the following technologies:
-
-#Django: A high-level Python web framework for rapid development.
-HTML, CSS, and JavaScript: For creating the user interface and front-end interactions.
-Bootstrap: A popular CSS framework for responsive and visually appealing designs.
-SQLite: A lightweight relational database used for data storage during development.
+Django, HTML, CSS, Bootstrap, SQLite
 
 #Installation
 Python3 must be already installed
