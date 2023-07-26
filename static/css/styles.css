@@ -1,0 +1,34 @@
+/* styles.css */
+
+/* Add any additional styles specific to this template here */
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+.container-fluid {
+  padding: 20px;
+}
+
+.row {
+  margin: 0 -15px;
+}
+
+.col-sm-2,
+.col-sm-10 {
+  position: relative;
+  min-height: 1px;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.col-sm-2 {
+  flex: 0 0 16.666667%;
+  max-width: 16.666667%;
+}
+
+.col-sm-10 {
+  flex: 0 0 83.333333%;
+  max-width: 83.333333%;
+}
