@@ -1,13 +1,16 @@
+import os
 from pathlib import Path
+
+import dj_database_url
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = "django-insecure-fi5tw)rvtmz!k4d(mt-sixqd-o#9mau&8562(*@yn^wd%(ig1f"
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY","django-insecure-fi5tw)rvtmz!k4d(mt-sixqd-o#9mau&8562(*@yn^wd%(ig1f")
 
-DEBUG = True
+DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["127.0.0.1"]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -26,6 +29,7 @@ AUTH_USER_MODEL = "newspaper.Redactor"
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -63,6 +67,9 @@ DATABASES = {
     }
 }
 
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES["default"].update(db_from_env)
+
 AUTH_PASSWORD_VALIDATORS = [
     {
         "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
@@ -78,7 +85,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-LOGIN_REDIRECT_URL = "/newspaper/"
+LOGIN_REDIRECT_URL = "/"
 
 LANGUAGE_CODE = "en-us"
 
@@ -93,5 +100,6 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
                     ]
+STATIC_ROOT = "/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
