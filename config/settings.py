@@ -6,11 +6,14 @@ import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY","django-insecure-fi5tw)rvtmz!k4d(mt-sixqd-o#9mau&8562(*@yn^wd%(ig1f")
+SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", "django-insecure-fi5tw)rvtmz!k4d(mt-sixqd-o#9mau&8562(*@yn^wd%(ig1f")
 
 DEBUG = os.environ.get("DJANGO_DEBUG", "") != "False"
 
 ALLOWED_HOSTS = ["127.0.0.1"]
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 INSTALLED_APPS = [
     "django.contrib.admin",
@@ -100,6 +103,6 @@ STATIC_URL = "static/"
 STATICFILES_DIRS = [
     BASE_DIR / "static",
                     ]
-STATIC_ROOT = "/"
+STATIC_ROOT = "staticfiles/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
