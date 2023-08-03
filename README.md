@@ -22,6 +22,9 @@ Django, HTML, CSS, Bootstrap, SQLite
 + python manage.py migrate
 + python manage.py runserver
 
+#TestUser
+login: rost
+password: Qwert12345
 ![image](https://github.com/Mr-Furman/newspaper_agency/assets/106009301/638dd1a5-15c6-404a-aac5-4c7d5d7f52e9)
 
 
