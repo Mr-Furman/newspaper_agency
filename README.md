@@ -15,10 +15,11 @@ Django, HTML, CSS, Bootstrap, SQLite
 + Python3 must be already installed
 + git clone https://github.com/Mr-Furman/newspaper_agency**
 + python -m venv venv
++ Activate virtual environment
 + source venv/bin/activate
++ (for Windows: <path_to_venv>\Scripts\Activate)
 + pip install -r requirements.txt
 + create superuser(python manage.py createsuperuser)
-+ python manage.py makemigrations
 + python manage.py migrate
 + python manage.py runserver
 
